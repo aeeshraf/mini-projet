@@ -290,7 +290,10 @@ void main(){
     struct etudiant etudiants[100];
     menu();
     do{
-        scanf("%d",&n);
+        if (scanf("%d", &n) != 1) {
+            while (getchar() != '\n'); 
+            n = -1; 
+        }
         if(n==1){system("clear");ajouter_etudiant(etudiants,&nombre_etudiant,&informatique,&finance,&electricite,&premiere,&deuxieme,&troisieme,&quatrieme,&cinquieme);}
         else if(n==2){system("clear");afficher_etudiant(etudiants,nombre_etudiant);printf("entrer 1 pour + de detail: ");scanf("%d",&n);if(n==1){system("clear");afficher_etudiant_plus_info(etudiants,nombre_etudiant);}}
         else if(n==3){system("clear");modifier(etudiants,nombre_etudiant,&informatique,&finance,&electricite,&premiere,&deuxieme,&troisieme,&quatrieme,&cinquieme);}
@@ -309,10 +312,13 @@ void main(){
         }
 
 
-        do
+do
         {
-            printf("entrer '0' pour retourner au menu:");
-            scanf("%d",&n);
+            printf("\nEntrer '0' pour retourner au menu: ");
+            if (scanf("%d", &n) != 1) {
+                while (getchar() != '\n');
+                n = -1;
+            }
             system("clear");
         }
         while(n!=0);
