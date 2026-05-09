@@ -28,26 +28,26 @@ void menu(){
 void ajouter_etudiant(struct etudiant etudiants[],int *nombre_etudiant,int *informatique,int *finance,int *electricite,int *premiere,int *deuxieme,int *troisieme,int *quatrieme,int *cinquieme){
     int n;
     printf("Identifiant unique de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].id);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].id);system("clear");
     printf("Nom de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].nom);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].nom);system("clear");
     printf("Prénom de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].prenom);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].prenom);system("clear");
     printf("Date de naissance de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].date_de_naissance);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].date_de_naissance);system("clear");
     printf("Adresse de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].adresse);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].adresse);system("clear");
     printf("Numéro de téléphone de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].numero);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].numero);system("clear");
     printf("Email de l'étudiant: ");
-    scanf("%s",etudiants[*nombre_etudiant].email);system("clear");
+    scanf(" %[^\n]",etudiants[*nombre_etudiant].email);system("clear");
 
     do{
-        printf("Filière de l'étudiant:\n1.informatique\n2.finance\n3.electrique\n");
+        printf("Filière de l'étudiant:\n1.informatique\n2.finance\n3.electricite\n");
         scanf("%d",&n);
         if(n==1){strcpy(etudiants[*nombre_etudiant].filiere,"informatique");(*informatique)++;}
         else if(n==2){strcpy(etudiants[*nombre_etudiant].filiere,"finance");(*finance)++;}
-        else if(n==3){strcpy(etudiants[*nombre_etudiant].filiere,"electrique");(*electricite)++;}
+        else if(n==3){strcpy(etudiants[*nombre_etudiant].filiere,"electricite");(*electricite)++;}
     }while(n!=1&&n!=2&&n!=3);system("clear");
 
     do{
@@ -95,20 +95,20 @@ void afficher_etudiant_plus_info(struct etudiant etudiants[],int nombre_etudiant
 };
 
 void modifier(struct etudiant etudiants[],int nombre_etudiant,int *informatique,int *finance,int *electricite,int *premiere,int *deuxieme,int *troisieme,int *quatrieme,int *cinquieme){
-    char identifiant[10],a_modifier[20];int n;
+    char identifiant[10],a_modifier[20];int n,trouve=0;
     printf("Veuiller entrer l'id de letudiant: ");
-    scanf("%s",identifiant);system("clear");
+    scanf(" %[^\n]",identifiant);system("clear");
     printf("que voulez-vous changer:\n1.nom\n2.prenom\n3.date de naissance\n4.adresse\n5.numero de telephone\n6.email\n7.filiere\n8.annee d'etude\n");
     scanf("%d",&n);system("clear");
     for(int i=0;i<nombre_etudiant;i++){
         if(strcmp(etudiants[i].id,identifiant)==0)
-        {
-            if(n==1){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].nom,a_modifier);}
-            else if(n==2){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].prenom,a_modifier);}
-            else if(n==3){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].date_de_naissance,a_modifier);}
-            else if(n==4){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].adresse,a_modifier);}
-            else if(n==5){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].numero,a_modifier);}
-            else if(n==6){printf("nouvelle valeur=> ");scanf("%s",a_modifier);strcpy(etudiants[i].email,a_modifier);}
+        {   trouve=1;
+            if(n==1){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].nom,a_modifier);}
+            else if(n==2){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].prenom,a_modifier);}
+            else if(n==3){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].date_de_naissance,a_modifier);}
+            else if(n==4){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].adresse,a_modifier);}
+            else if(n==5){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].numero,a_modifier);}
+            else if(n==6){printf("nouvelle valeur=> ");scanf(" %[^\n]",a_modifier);strcpy(etudiants[i].email,a_modifier);}
             else if(n==7)
             {  
                if(strcmp(etudiants[i].filiere,"informatique")==0){(*informatique)--;}
@@ -116,11 +116,11 @@ void modifier(struct etudiant etudiants[],int nombre_etudiant,int *informatique,
                else if(strcmp(etudiants[i].filiere,"electricite")==0){(*electricite)--;}
                do
                 {
-                    printf("Filière de l'étudiant:\n1.informatique\n2.finance\n3.electrique\n");
+                    printf("Filière de l'étudiant:\n1.informatique\n2.finance\n3.electricite\n");
                     scanf("%d",&n);
                     if(n==1){strcpy(etudiants[i].filiere,"informatique");(*informatique)++;}
                     else if(n==2){strcpy(etudiants[i].filiere,"finance");(*finance)++;}
-                    else if(n==3){strcpy(etudiants[i].filiere,"electrique");(*electricite)++;}
+                    else if(n==3){strcpy(etudiants[i].filiere,"electricite");(*electricite)++;}
                 }
                 while(n!=1&&n!=2&&n!=3);
             }
@@ -148,12 +148,13 @@ void modifier(struct etudiant etudiants[],int nombre_etudiant,int *informatique,
         }
             
     }   
+    if(trouve==0){printf("etudiant inexistant\n");}
 }
 
 void supprimer(struct etudiant etudiants[],int *nombre_etudiant,int *informatique,int *finance,int *electricite,int *premiere,int *deuxieme,int *troisieme,int *quatrieme,int *cinquieme){
     char id[10];int n,trouve=0;
     printf("veuiller saisir l'id de l'etudiant a suprimer: ");
-    scanf("%s",id);system("clear");
+    scanf(" %[^\n]",id);system("clear");
     printf("etes vous sur ?:\n1.oui\n2.non\n");
     scanf("%d",&n);
     
@@ -167,6 +168,7 @@ void supprimer(struct etudiant etudiants[],int *nombre_etudiant,int *informatiqu
                 if(strcmp(etudiants[i].filiere,"informatique")==0){(*informatique)--;}
                 else if(strcmp(etudiants[i].filiere,"finance")==0){(*finance)--;}
                 else if(strcmp(etudiants[i].filiere,"electricite")==0){(*electricite)--;}
+
                 if(strcmp(etudiants[i].annee_detude,"1ère Année")==0){(*premiere)--;}
                 else if(strcmp(etudiants[i].annee_detude,"2ème Année")==0){(*deuxieme)--;}
                 else if(strcmp(etudiants[i].annee_detude,"3ème Année")==0){(*troisieme)--;}
@@ -279,7 +281,7 @@ void rechercher(struct etudiant etudiants[],int nombre_etudiant){
 }
 
 void statistiques(int nombre_etudiant,int informatique,int finance,int electricite,int premiere,int deuxieme,int troisieme,int quatrieme,int cinquieme){
-    printf("Nombre total d'étudiants: %d",nombre_etudiant);
+    printf("Nombre total d'étudiants: %d\n",nombre_etudiant);
     printf("Nombre d'étudiants par filière:\n\tinformatique: %d\n\tfinance: %d\n\telectricite: %d\n",informatique,finance,electricite);
     printf("Nombre d'étudiants par année d'étude:\n\t1ère Année: %d\n\t2ème Année: %d\n\t3ème Année: %d\n\t4ème Année: %d\n\t5ème Année: %d\n",premiere,deuxieme,troisieme,quatrieme,cinquieme);
 }
@@ -295,6 +297,16 @@ void main(){
         else if(n==4){system("clear");supprimer(etudiants,&nombre_etudiant,&informatique,&finance,&electricite,&premiere,&deuxieme,&troisieme,&quatrieme,&cinquieme);}
         else if(n==5){system("clear");rechercher(etudiants,nombre_etudiant);}
         else if(n==6){system("clear");statistiques(nombre_etudiant,informatique,finance,electricite,premiere,deuxieme,troisieme,quatrieme,cinquieme);}
+        else if(n==7)
+        {
+            system("clear");
+            printf("\n-------------------------------------------\n");
+            printf("Fin de session.\n");
+            printf("Nombre total d'étudiants enregistrés : %d\n", nombre_etudiant);
+            printf("Merci d'avoir utilisé notre logiciel de gestion.\n");
+            printf("-------------------------------------------\n");
+            break;
+        }
 
 
         do
